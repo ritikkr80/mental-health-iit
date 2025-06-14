@@ -2,9 +2,11 @@
 import React from 'react';
 import { Bell, User } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="relative px-4 pt-12 pb-6">
@@ -33,12 +35,18 @@ export const Header = () => {
         </div>
         
         <div className="flex items-center gap-3">
-          <button className="p-2 rounded-full bg-white/10 backdrop-blur-sm">
+          <button 
+            onClick={() => navigate('/notifications')}
+            className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
+          >
             <Bell size={20} className="text-white" />
           </button>
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
+          <button
+            onClick={() => navigate('/profile')}
+            className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center hover:from-pink-500 hover:to-purple-600 transition-colors"
+          >
             <User size={20} className="text-white" />
-          </div>
+          </button>
         </div>
       </div>
     </div>
