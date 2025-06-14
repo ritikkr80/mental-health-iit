@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 export const PeerSupport = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 shadow-lg">
       <h3 className="text-purple-800 font-semibold mb-2">Assess Your Self</h3>
@@ -17,7 +20,10 @@ export const PeerSupport = () => {
             <p className="text-gray-600 text-sm mb-3">
               Evaluate the right course of action for you.Evaluate the right course of action for you
             </p>
-            <Button className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-full px-6 py-2 text-sm">
+            <Button 
+              onClick={() => navigate('/assessment')}
+              className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-full px-6 py-2 text-sm"
+            >
               Start Now!
             </Button>
           </div>

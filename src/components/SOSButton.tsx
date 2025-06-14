@@ -1,18 +1,10 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 export const SOSButton = () => {
-  const { toast } = useToast();
-
-  const handleSOS = () => {
-    toast({
-      title: "SOS Activated",
-      description: "Connecting you to emergency support resources...",
-      variant: "destructive",
-    });
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="bg-red-50 border-2 border-red-200 rounded-3xl p-6 shadow-lg">
@@ -22,7 +14,7 @@ export const SOSButton = () => {
           Access emergency support and crisis resources
         </p>
         <Button 
-          onClick={handleSOS}
+          onClick={() => navigate('/sos')}
           className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-full px-8 py-3 font-bold text-lg shadow-lg"
         >
           🆘 SOS - Get Help Now

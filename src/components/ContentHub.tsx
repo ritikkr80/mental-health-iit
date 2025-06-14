@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 export const ContentHub = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="space-y-4">
       <h3 className="text-white font-semibold text-lg px-2">Today's Tasks</h3>
@@ -14,7 +17,10 @@ export const ContentHub = () => {
             <p className="text-gray-700 text-sm mb-4">
               Let's open up to the thing that matters among the people
             </p>
-            <Button className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-full px-6 py-2 font-medium">
+            <Button 
+              onClick={() => navigate('/peer-group')}
+              className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-full px-6 py-2 font-medium"
+            >
               Join Now ▶
             </Button>
           </div>
@@ -33,7 +39,10 @@ export const ContentHub = () => {
             <p className="text-gray-700 text-sm mb-4">
               A mindful Meditation guide to relogram yourself to silence.
             </p>
-            <Button className="bg-gradient-to-r from-orange-400 to-yellow-500 hover:from-orange-500 hover:to-yellow-600 text-white rounded-full px-6 py-2 font-medium">
+            <Button 
+              onClick={() => navigate('/meditation')}
+              className="bg-gradient-to-r from-orange-400 to-yellow-500 hover:from-orange-500 hover:to-yellow-600 text-white rounded-full px-6 py-2 font-medium"
+            >
               Start Now ▶
             </Button>
           </div>
