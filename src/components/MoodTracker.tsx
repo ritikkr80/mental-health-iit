@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 interface MoodTrackerProps {
   currentMood: string;
@@ -8,6 +9,8 @@ interface MoodTrackerProps {
 }
 
 export const MoodTracker = ({ currentMood, setCurrentMood }: MoodTrackerProps) => {
+  const navigate = useNavigate();
+  
   const moods = [
     { emoji: '🎁', label: 'Excited' },
     { emoji: '😰', label: 'Anxious' },
@@ -38,7 +41,10 @@ export const MoodTracker = ({ currentMood, setCurrentMood }: MoodTrackerProps) =
         ))}
       </div>
       
-      <Button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-full py-3 font-medium">
+      <Button 
+        onClick={() => navigate('/mood-tracking')}
+        className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-full py-3 font-medium"
+      >
         Track Mood →
       </Button>
     </div>

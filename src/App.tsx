@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +16,7 @@ import Assessment from "./pages/Assessment";
 import PeerGroup from "./pages/PeerGroup";
 import Meditation from "./pages/Meditation";
 import SOS from "./pages/SOS";
+import MoodTracking from "./pages/MoodTracking";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +38,7 @@ const App = () => (
             <Route path="/peer-group" element={<PeerGroup />} />
             <Route path="/meditation" element={<Meditation />} />
             <Route path="/sos" element={<SOS />} />
+            <Route path="/mood-tracking" element={<MoodTracking />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
