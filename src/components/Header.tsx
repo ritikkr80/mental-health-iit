@@ -19,10 +19,12 @@ export const Header = () => {
       <div className="flex justify-between items-start relative z-10">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-              <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs">💜</span>
-              </div>
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center p-1">
+              <img 
+                src="/lovable-uploads/58e1e331-4999-4d50-8858-597a25e77bf0.png" 
+                alt="Nivaan Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-white/90 text-sm font-medium">Nivaan</span>
           </div>

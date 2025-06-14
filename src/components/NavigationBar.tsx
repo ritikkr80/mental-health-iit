@@ -2,20 +2,27 @@
 import React from 'react';
 import { Home, Clock, User, Settings } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 export const NavigationBar = () => {
   const { logout } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   
   const navItems = [
-    { icon: Home, label: 'Home', active: true },
-    { icon: Clock, label: 'History' },
-    { icon: User, label: 'Community' },
-    { icon: Settings, label: 'Settings' }
+    { icon: Home, label: 'Home', path: '/', active: location.pathname === '/' },
+    { icon: Clock, label: 'History', path: '/history', active: location.pathname === '/history' },
+    { icon: User, label: 'Community', path: '/community', active: location.pathname === '/community' },
+    { icon: Settings, label: 'Settings', path: '/settings', active: location.pathname === '/settings' }
   ];
 
-  const handleLogout = () => {
-    logout();
+  const handleNavigation = (item: any) => {
+    if (item.path) {
+      navigate(item.path);
+    } else if (item.label === 'Settings') {
+      navigate('/settings');
+    }
   };
 
   return (
@@ -24,7 +31,7 @@ export const NavigationBar = () => {
         {navItems.map((item, index) => (
           <button
             key={index}
-            onClick={item.label === 'Settings' ? handleLogout : undefined}
+            onClick={() => handleNavigation(item)}
             className={`flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 ${
               item.active 
                 ? 'bg-white/20 text-white' 
@@ -32,9 +39,7 @@ export const NavigationBar = () => {
             }`}
           >
             <item.icon size={20} />
-            <span className="text-xs font-medium">
-              {item.label === 'Settings' ? 'Logout' : item.label}
-            </span>
+            <span className="text-xs font-medium">{item.label}</span>
           </button>
         ))}
       </div>
