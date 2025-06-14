@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Bell, User } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 export const Header = () => {
+  const { user } = useAuth();
+
   return (
     <div className="relative px-4 pt-12 pb-6">
       {/* Background decoration */}
@@ -24,7 +27,7 @@ export const Header = () => {
             <span className="text-white/90 text-sm font-medium">Nivaan</span>
           </div>
           <h1 className="text-white text-2xl font-bold mb-1">Good morning,</h1>
-          <p className="text-white text-xl">Alex</p>
+          <p className="text-white text-xl">{user?.name || 'User'}</p>
         </div>
         
         <div className="flex items-center gap-3">

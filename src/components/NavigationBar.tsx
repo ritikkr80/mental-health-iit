@@ -1,8 +1,12 @@
 
 import React from 'react';
 import { Home, Clock, User, Settings } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/button';
 
 export const NavigationBar = () => {
+  const { logout } = useAuth();
+  
   const navItems = [
     { icon: Home, label: 'Home', active: true },
     { icon: Clock, label: 'History' },
@@ -10,12 +14,17 @@ export const NavigationBar = () => {
     { icon: Settings, label: 'Settings' }
   ];
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-purple-700 backdrop-blur-sm border-t border-purple-400/30">
       <div className="flex items-center justify-around py-3">
         {navItems.map((item, index) => (
           <button
             key={index}
+            onClick={item.label === 'Settings' ? handleLogout : undefined}
             className={`flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 ${
               item.active 
                 ? 'bg-white/20 text-white' 
@@ -23,7 +32,9 @@ export const NavigationBar = () => {
             }`}
           >
             <item.icon size={20} />
-            <span className="text-xs font-medium">{item.label}</span>
+            <span className="text-xs font-medium">
+              {item.label === 'Settings' ? 'Logout' : item.label}
+            </span>
           </button>
         ))}
       </div>
